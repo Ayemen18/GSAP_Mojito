@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
+
+@import "tailwindcss";
+
+@font-face {
+    font-family: "Modern Negra";
+    src: url("/fonts/Modern Negra Demo.ttf") format("truetype");
+}
+
+@theme {
+    --color-yellow: #e7d393;
+    --color-white-100: #efefef;
+
+    --font-sans: "Mona Sans", sans-serif;
+    --font-modern-negra: "Modern Negra", sans-serif;
+    --font-serif: "DM Serif Text", serif;
+}
+
+html,
+body {
+    width: 100%;
+    background-color: black;
+    color: white;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+@utility flex-center {
+    @apply flex justify-center items-center;
+}
+
+@utility col-center {
+    @apply flex flex-col justify-center items-center;
+}
+
+@utility abs-center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+@utility text-gradient {
+    background: linear-gradient(to bottom, #ffffff, #898989);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+@utility radial-gradient {
+    background: radial-gradient(
+        circle at center,
+        #434343 0%,
+        #000 50%,
+        transparent 100%
+    );
+}
+
+@utility masked-img {
+    mask-image: url("/images/mask-img.png");
+    -webkit-mask-image: url("/images/mask-img.png");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 50%;
+}
+
+@layer components {
+    main {
+        @apply w-full overflow-x-hidden;
+    }
+
+    nav {
+        @apply fixed z-50 w-full;
+
+        div {
+            @apply flex md:flex-row flex-col md:justify-between items-center gap-5 py-5 lg:px-0 px-5 container mx-auto;
+        }
+
+        p {
+            @apply font-modern-negra text-3xl -mb-2;
+        }
+
+        a {
+            @apply cursor-pointer whitespace-nowrap md:text-base text-sm;
+        }
+
+        ul {
+            @apply flex-center lg:gap-12 gap-7;
+        }
+    }
+
+    .noisy {
+        @apply absolute inset-0 size-full bg-[url("/images/noise.png")];
+    }
+
+    #hero {
+        @apply relative z-10 min-h-screen min-h-dvh w-full border border-transparent;
+
+        h1 {
+            @apply md:mt-32 mt-40 text-8xl md:text-[20vw] leading-none text-center font-modern-negra;
+        }
+
+        .body {
+            @apply container mx-auto absolute left-1/2 -translate-x-1/2 lg:bottom-20 md:top-[30vh] flex justify-between items-end px-5;
+
+            .content {
+                @apply flex lg:flex-row flex-col w-full gap-10 justify-between items-center lg:items-end mx-auto;
+
+                p:nth-of-type(2) {
+                    @apply font-modern-negra text-6xl
+                           text-[color:var(--color-yellow)]
+                           max-w-xl;
+                }
+
+                p:last-of-type {
+                    @apply 2xl:text-start text-center;
+                }
+
+                .view-cocktails {
+                    @apply space-y-5 text-lg lg:max-w-2xs md:max-w-xs w-full;
+
+                    a {
+                        @apply font-semibold opacity-80
+                               hover:text-[color:var(--color-yellow)];
+                    }
+                }
+            }
+        }
+    }
+
+    #cocktails {
+        @apply relative min-h-screen min-h-dvh w-full overflow-hidden;
+
+        .list {
+            @apply container mx-auto relative z-10 flex md:flex-row flex-col justify-between items-start gap-20 pt-40 2xl:px-0 px-5;
+
+            h3 {
+                @apply font-modern-negra text-xl 2xl:text-3xl
+                       text-[color:var(--color-yellow)];
+            }
+        }
+    }
+
+    #about {
+        @apply min-h-screen py-28 2xl:px-0 px-5 container mx-auto;
+
+        span {
+            @apply font-bold text-5xl
+                   text-[color:var(--color-yellow)];
+        }
+    }
+
+    #art {
+        @apply flex-center flex-col min-h-screen min-h-dvh p-5 mt-20 relative radial-gradient;
+
+        h2 {
+            @apply relative md:text-[20vw] text-8xl whitespace-nowrap
+                   font-modern-negra text-center text-[#505050];
+        }
+    }
+
+    #menu {
+        @apply relative w-full md:mt-40 2xl:px-0 px-5 py-20 radial-gradient;
+
+        .cocktail-tabs {
+            @apply grid md:grid-cols-4 grid-cols-2 gap-10 relative z-10 md:max-w-6xl md:mx-auto;
+
+            button {
+                @apply md:text-3xl text-xl pb-2 cursor-pointer
+                       border-b border-transparent transition-colors
+                       font-modern-negra
+                       hover:text-[color:var(--color-yellow)]
+                       hover:border-[color:var(--color-yellow)];
+            }
+        }
+    }
+
+    #contact {
+        @apply relative px-4 text-center w-full overflow-hidden radial-gradient;
+
+        .content {
+            @apply container mx-auto py-16 min-h-screen min-h-dvh;
+
+            h2 {
+                @apply text-5xl lg:text-6xl 2xl:text-8xl font-modern-negra;
+            }
+        }
+    }
+}
