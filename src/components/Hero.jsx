@@ -102,7 +102,7 @@ useGSAP(() =>{
       </section>
 
       <div className="video absolute inset-0">
-        <video ref={videoRef} src="/videos/input.mp4" muted playsInline preload="true">
+        <video ref={videoRef} src="/videos/output.mp4" muted playsInline preload="true">
 
         </video>
       </div>
